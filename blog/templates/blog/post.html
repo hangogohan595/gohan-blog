@@ -1,10 +1,27 @@
 {% extends 'boiletplate.html' %}
 {% load static %}
 
-{% block header_links %}
+{% block title %}
+  Post Title
+{% endblock %}
 
+{% block header_links %}
+  <link rel="stylesheet" href="{% static 'blog/post.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <h1>This is the posts page!</h1>
+  <section id="summary">
+    <h2>Post Title</h2>
+    <article>
+      <img src="https://picsum.photos/400" alt="Post Title" />
+      <address>By Gohan</address>
+      <div>
+        Last updated on <time datetime="">July 10th</time>
+      </div>
+    </article>
+  </section>
+
+  <main>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, facere. Quas ducimus vo luptas, tempore mollitia optio, ipsam hic id itaque reiciendis, odio nihil. Deserunt quaerat ad provident commodi eligendi unde. Libero aliquam et, itaque cum eligendi placeat adipisci. Sed architecto possimus quae itaque, minus sapiente aperiam similique corrupti. Voluptatibus consectetur dolorem tenetur eligendi dolorum maxim e omnis corporis laudantium sequi exercitationem.</p>
+  </main>
 {% endblock %}
