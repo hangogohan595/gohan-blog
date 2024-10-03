@@ -1,5 +1,38 @@
 {% extends 'boiletplate.html' %}
+{% load static %}
+
+{% block header_links %}
+  <link rel="stylesheet" href="{% static 'blog/home.css' %}" />
+{% endblock %}
 
 {% block content %}
-  <h1>This is the home page!</h1>
+  <section id="welcome">
+    <header>
+      <img src="https://picsum.photos/400" alt="Gohan - The Author of this Blog" />
+      <h2>Gohan's Blog</h2>
+    </header>
+    <p>Hi, I am Gohan and this is a blog about my developer journey</p>
+  </section>
+  <section id="latest-posts">
+    <h2>My Latest Thoughts</h2>
+
+    <ul>
+      <li>
+        <article class="post">
+          <a href="">
+            <img src="https://picsum.photos/400" alt="React Image" />
+            <div class="post__content">
+              <h3>The Power of React</h3>
+              <p>There's nothing like the frontend framewokr React</p>
+            </div>
+          </a>
+        </article>
+      </li>
+    </ul>
+  </section>
+  <section id="about">
+    <h2>What I do</h2>
+    <p>I love programming in general but web development in particular, at least currently</p>
+    <p>My goal is to have my own successful web application</p>
+  </section>
 {% endblock %}
