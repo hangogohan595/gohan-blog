@@ -1,10 +1,10 @@
 <li>
   <article class="post">
-    <a href="{% url 'post-posts' 'the-power-of-react' %}">
-      <img src="https://picsum.photos/400" alt="React Image" />
+    <a href="{% url 'post-posts' post.slug %}">
+      <img src="{{ post.image }}" alt="{{ post.title }}" />
       <div class="post__content">
-        <h3>The Power of React</h3>
-        <p>There's nothing like the frontend framewokr React</p>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
       </div>
     </a>
   </article>

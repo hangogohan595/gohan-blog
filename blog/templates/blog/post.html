@@ -11,17 +11,17 @@
 
 {% block content %}
   <section id="summary">
-    <h2>Post Title</h2>
+    <h2>{{ post.title }}</h2>
     <article>
-      <img src="https://picsum.photos/400" alt="Post Title" />
-      <address>By Gohan</address>
+      <img src="{{ post.image }}" alt="Post Title" />
+      <address>By {{ post.author }}</address>
       <div>
-        Last updated on <time datetime="">July 10th</time>
+        Last updated on <time datetime="">{{ post.date|date:'D d M Y' }}</time>
       </div>
     </article>
   </section>
 
   <main>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, facere. Quas ducimus vo luptas, tempore mollitia optio, ipsam hic id itaque reiciendis, odio nihil. Deserunt quaerat ad provident commodi eligendi unde. Libero aliquam et, itaque cum eligendi placeat adipisci. Sed architecto possimus quae itaque, minus sapiente aperiam similique corrupti. Voluptatibus consectetur dolorem tenetur eligendi dolorum maxim e omnis corporis laudantium sequi exercitationem.</p>
+    <p>{{ post.content|linebreaks }}</p>
   </main>
 {% endblock %}

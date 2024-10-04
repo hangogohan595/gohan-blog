@@ -18,7 +18,9 @@
     <h2>My Latest Thoughts</h2>
 
     <ul>
-      {% include 'blog/includes/post-intro.html' %}
+      {% for post in posts %}
+        {% include 'blog/includes/post-intro.html' %}
+      {% endfor %}
     </ul>
   </section>
   <section id="about">
