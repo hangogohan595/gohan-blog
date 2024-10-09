@@ -1,40 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from datetime import date
+from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 # Create your views here.
-all_posts = [
-    {
-        'slug': 'the-power-of-react',
-        'image': 'https://picsum.photos/400',
-        'author': 'Gohan',
-        'date': date(2024, 10, 3),
-        'title': 'The Power of React',
-        'description': 'There\'s nothing like the frontend framework React',
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci magni voluptas, nulla eius dolores dignissimos accusamus nam repudiandae velit vel, facere at dolore placeat. Sunt possimus voluptatum impedit quas temporibus.'
-    },
-    {
-        'slug': 'the-power-of-django',
-        'image': 'https://picsum.photos/400',
-        'author': 'Gohan',
-        'date': date(2024, 10, 4),
-        'title': 'The Power of Django',
-        'description': 'There\'s nothing like the framework Django',
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci magni voluptas, nulla eius dolores dignissimos accusamus nam repudiandae velit vel, facere at dolore placeat. Sunt possimus voluptatum impedit quas temporibus.'
-    },
-    {
-        'slug': 'the-power-of-laravel',
-        'image': 'https://picsum.photos/400',
-        'author': 'Gohan',
-        'date': date(2024, 10, 4),
-        'title': 'The Power of PHP Laravel',
-        'description': 'There\'s nothing like the Laravel',
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci magni voluptas, nulla eius dolores dignissimos accusamus nam repudiandae velit vel, facere at dolore placeat. Sunt possimus voluptatum impedit quas temporibus.'
-    }
-]
-
-sorted_posts = sorted(all_posts, key=lambda post: post['date'])
-latest_posts = sorted_posts[-3:]
+all_posts = Post.objects.all().order_by('-date')
+latest_posts = all_posts[:3]
 
 
 def home(request):
@@ -46,5 +15,5 @@ def posts(request):
 
 
 def post(request, slug):
-    post = next(post for post in all_posts if post['slug'] == slug)
-    return render(request, 'blog/post.html', {'post': post})
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'blog/post.html', {'post': post, 'tags': post.tags.all()})
